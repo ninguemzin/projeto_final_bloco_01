@@ -79,8 +79,8 @@ public abstract class Livro {
 		this.numeropaginas = numeropaginas;
 	}
 
-	public int getPreco() {
-		return ano;
+	public float getPreco() {
+		return preco;
 	}
 
 	public void setPreco(float preco) {
@@ -93,30 +93,29 @@ public abstract class Livro {
 
 		switch (this.formato) {
 		case 1:
-			formato = "Livro Fisico";
+			formato = "Livro Físico";
 			break;
 		case 2:
-			formato = "Livro Digital";
+			formato = "Livro Digital(E-book)";
+			break;
+		default:
+			formato = "Formato desconhecido";
 			break;
 		}
-
-		System.out.println("\n\n***********************************************************");
-		System.out.println("Dados do Livro:");
-		System.out.println("***********************************************************");
-		System.out.println("ID do Livro: " + this.numero);
+		
+		System.out.println("Formato: " + formato);
 		System.out.println("Título: " + this.titulo);
 		System.out.println("Autor: " + this.autor);
-		System.out.println("Ano de Publicação: " + this.ano);
+		System.out.println("Ano: " + this.ano);
 		System.out.println("Formato: " + formato);
 		System.out.println("Gênero: " + this.genero);
 		System.out.println("Número de Páginas: " + this.numeropaginas);
-		System.out.println("Número de Páginas: " + this.preco);
-		System.out.println("***********************************************************");
-
+		System.out.printf("Preço: R$ %.2f%n", this.preco);
+		System.out.println("***************************"); 	
 	}
 
 	public void listarPorTitulos() {
-		
+
 		String formato = "";
 
 		switch (this.formato) {
@@ -127,7 +126,7 @@ public abstract class Livro {
 			formato = "Livro Digital";
 			break;
 		}
-		
+
 		System.out.println("ID do Livro: " + this.numero);
 		System.out.println("Título: " + this.titulo);
 		System.out.println("Formato: " + formato + "\n\n");

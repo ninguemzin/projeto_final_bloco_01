@@ -10,13 +10,6 @@ public class LivroDigital extends Livro {
 
 	@Override
 	public void visualizarLivro() {
-		System.out.println("Livro Digital: ");
-	    System.out.println("Título: " + getTitulo());
-	    System.out.println("Autor: " + getAutor());
-	    System.out.println("Ano: " + getAno());
-	    System.out.println("Formato: " + (getFormato() == 1 ? "Físico" : "Digital"));
-	    System.out.println("Gênero: " + getGenero());
-	    System.out.println("Número de Páginas: " + getNumeropaginas());
-	    System.out.println("Preço: R$ " + getPreco());	
+		super.visualizarLivro();
 	}
 }

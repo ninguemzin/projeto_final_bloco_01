@@ -69,12 +69,12 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("Listar Livros\n\n");
-				livros.listarTitulos();
+				livros.listarLivros();
 				keyPress();
 				break;
 			case 2:
 				System.out.println("Visualizar detalhes do Livro - por numero\n\n");
-
+				livros.listarTitulos();
 				System.out.println("Digite o numero da conta: ");
 				numero = leia.nextInt();
 
