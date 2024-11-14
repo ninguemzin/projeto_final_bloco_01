@@ -3,9 +3,13 @@ package repository;
 import model.Livro;
 
 public interface LivroRepository {
-	void adicionarLivro(Livro livro);
+	public void cadastrarLivro(Livro livro);
 
-	void listarLivros();
+	public void deletarLivro(int numero);
 
-	Livro buscarLivro(int id);
+	public void listarLivros();
+
+	public void gerarLivros(Livro livro);
+
+	public void buscarLivro(int numero);
 }
