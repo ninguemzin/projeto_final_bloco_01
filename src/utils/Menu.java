@@ -2,9 +2,18 @@ package utils;
 
 import java.util.Scanner;
 
+import model.Livro;
+import model.LivroDigital;
+import model.LivroFisico;
+
 public class Menu {
 	public static void main(String[] args) {
-
+		
+		Livro livro = new LivroFisico(1, "O Hobbit", "HarperCollins", "J.R.R. Tolkien", 1937, 2, "Fantasia", "Uma jornada épica!", 310, 25.00f);
+		livro.visualizarLivro();
+		Livro livro3 = new LivroDigital(1, "O Hobbit", "HarperCollins", "J.R.R. Tolkien", 1937, 1, "Fantasia", "Uma jornada épica!", 310, 25.00f);
+		livro3.visualizarLivro();
+		
 		Scanner leia = new Scanner(System.in);
 
 		int opcao;
