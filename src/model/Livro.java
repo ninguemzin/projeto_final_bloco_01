@@ -11,8 +11,8 @@ public abstract class Livro {
 	private int numeropaginas;
 	private float preco;
 
-	public Livro(int numero, String titulo, String autor, int ano, int formato, String genero,
-			 int numeropaginas, float preco) {
+	public Livro(int numero, String titulo, String autor, int ano, int formato, String genero, int numeropaginas,
+			float preco) {
 		this.numero = numero;
 		this.titulo = titulo;
 		this.autor = autor;
@@ -38,7 +38,6 @@ public abstract class Livro {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
 
 	public String getAutor() {
 		return autor;
@@ -79,7 +78,7 @@ public abstract class Livro {
 	public void setNumeropaginas(int numeropaginas) {
 		this.numeropaginas = numeropaginas;
 	}
-	
+
 	public int getPreco() {
 		return ano;
 	}
@@ -114,5 +113,23 @@ public abstract class Livro {
 		System.out.println("Número de Páginas: " + this.preco);
 		System.out.println("***********************************************************");
 
+	}
+
+	public void listarPorTitulos() {
+		
+		String formato = "";
+
+		switch (this.formato) {
+		case 1:
+			formato = "Livro Fisico";
+			break;
+		case 2:
+			formato = "Livro Digital";
+			break;
+		}
+		
+		System.out.println("ID do Livro: " + this.numero);
+		System.out.println("Título: " + this.titulo);
+		System.out.println("Formato: " + formato + "\n\n");
 	}
 }

@@ -35,6 +35,13 @@ public class LivroController implements LivroRepository {
 		}
 		
 	}
+	
+	public void listarTitulos() {
+		for (var livro : listaLivros) {
+			livro.listarPorTitulos();
+		}
+		
+	}
 
 	@Override
 	public void gerarLivros(Livro livro) {

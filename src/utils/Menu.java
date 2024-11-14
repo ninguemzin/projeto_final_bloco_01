@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import conta.util.Cores;
 import controller.LivroController;
 import model.Livro;
 import model.LivroDigital;
@@ -17,22 +16,22 @@ public class Menu {
 
 		LivroController livros = new LivroController();
 
-		int opcao,numero, ano, formato, numeropaginas;
+		int opcao, numero, ano, formato, numeropaginas;
 		String titulo, genero, autor;
 		float preco;
-		
+
 		LivroFisico lv1 = new LivroFisico(1, "O Hobbit", "J.R.R. Tolkien", 1937, 1, "Aventura", 310, 59.90f);
-        LivroFisico lv2 = new LivroFisico(2, "1984", "George Orwell", 1949, 1, "Distopia", 328, 49.90f);
+		LivroFisico lv2 = new LivroFisico(2, "1984", "George Orwell", 1949, 1, "Distopia", 328, 49.90f);
 
-        LivroDigital lv3 = new LivroDigital(3, "A Menina que Roubava Livros", "Markus Zusak", 2005, 2, "Drama", 560, 29.90f);
-        LivroDigital lv4 = new LivroDigital(4, "O Código Da Vinci", "Dan Brown", 2003, 2, "Suspense", 454, 19.90f);
+		LivroDigital lv3 = new LivroDigital(3, "A Menina que Roubava Livros", "Markus Zusak", 2005, 2, "Drama", 560,
+				29.90f);
+		LivroDigital lv4 = new LivroDigital(4, "O Código Da Vinci", "Dan Brown", 2003, 2, "Suspense", 454, 19.90f);
 
-		
-        livros.gerarLivros(lv1);
-        livros.gerarLivros(lv2);
-        livros.gerarLivros(lv3);
-        livros.gerarLivros(lv4);
-        
+		livros.gerarLivros(lv1);
+		livros.gerarLivros(lv2);
+		livros.gerarLivros(lv3);
+		livros.gerarLivros(lv4);
+
 		while (true) {
 
 			System.out.println("*****************************************************");
@@ -70,17 +69,17 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("Listar Livros\n\n");
-				livros.listarLivros();
+				livros.listarTitulos();
 				keyPress();
 				break;
 			case 2:
 				System.out.println("Visualizar detalhes do Livro - por numero\n\n");
-				keyPress();
-				
+
 				System.out.println("Digite o numero da conta: ");
 				numero = leia.nextInt();
 
 				livros.buscarLivro(numero);
+				keyPress();
 				break;
 			case 3:
 				System.out.println("Deletar Livro\n\n");
@@ -115,13 +114,13 @@ public class Menu {
 
 				System.out.print("Digite o Formato do Livro (1 - Físico, 2 - Digital): ");
 				formato = leia.nextInt();
-				
+
 				System.out.print("Digite o preço do Livro: ");
 				autor = leia.nextLine();
-				
+
 				System.out.print("Digite o preço do Livro: ");
 				numeropaginas = leia.nextInt();
-				
+
 				System.out.print("Digite o preço do Livro: ");
 				preco = leia.nextFloat();
 
