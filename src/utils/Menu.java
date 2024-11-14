@@ -27,10 +27,10 @@ public class Menu {
 				29.90f);
 		LivroDigital lv4 = new LivroDigital(4, "O Código Da Vinci", "Dan Brown", 2003, 2, "Suspense", 454, 19.90f);
 
-		livros.gerarLivros(lv1);
-		livros.gerarLivros(lv2);
-		livros.gerarLivros(lv3);
-		livros.gerarLivros(lv4);
+		livros.cadastrarLivro(lv1);
+		livros.cadastrarLivro(lv2);
+		livros.cadastrarLivro(lv3);
+		livros.cadastrarLivro(lv4);
 
 		while (true) {
 
@@ -102,28 +102,31 @@ public class Menu {
 			case 6:
 				System.out.println("Fazer Pedido\n\n");
 
-				System.out.print("Digite o Título do Livro: ");
+				System.out.println("Digite o Título do Livro: ");
 				leia.skip("\\R?");
 				titulo = leia.nextLine();
 
-				System.out.print("Digite o Gênero do Livro: ");
+				System.out.println("Digite o Gênero do Livro: ");
 				genero = leia.nextLine();
+				leia.skip("\\R?");
 
-				System.out.print("Digite o Ano de Publicação: ");
+				System.out.println("Digite o Ano de Publicação: ");
 				ano = leia.nextInt();
 
-				System.out.print("Digite o Formato do Livro (1 - Físico, 2 - Digital): ");
+				System.out.println("Digite o Formato do Livro (1 - Físico, 2 - Digital): ");
 				formato = leia.nextInt();
+				leia.skip("\\R?");
 
-				System.out.print("Digite o preço do Livro: ");
+				System.out.println("Digite o Autor: ");
 				autor = leia.nextLine();
+				leia.skip("\\R?");
 
-				System.out.print("Digite o preço do Livro: ");
+				System.out.println("Digite o numero de páginas: ");
 				numeropaginas = leia.nextInt();
+				leia.skip("\\R?");
 
-				System.out.print("Digite o preço do Livro: ");
-				preco = leia.nextFloat();
-
+				System.out.println("Digite o preço do Livro: ");
+			    preco = leia.nextFloat();
 				System.out.println("\nPedido de Livro criado com sucesso!");
 				System.out.println("Título: " + titulo);
 				System.out.println("Gênero: " + genero);
@@ -132,7 +135,13 @@ public class Menu {
 				System.out.println("Autor Livro: " + autor);
 				System.out.println("Numero de Páginas do Livro: " + numeropaginas);
 				System.out.println("Preço Livro: " + preco);
-				System.out.println("Pedido Realizado com Sucesso!");
+				if (formato == 1) {
+					livros.cadastrarLivro(new LivroFisico(livros.gerarNumero(), titulo, genero, ano, formato, autor, numeropaginas, preco));
+				}else if(formato == 2) {
+					livros.cadastrarLivro(new LivroDigital(livros.gerarNumero(), titulo, genero, ano, formato, autor, numeropaginas, preco));
+				}else {
+					System.out.println("Numero inválido!!");
+				}
 				keyPress();
 				break;
 			default:

@@ -12,8 +12,10 @@ public class LivroController implements LivroRepository {
 
 	@Override
 	public void cadastrarLivro(Livro livro) {
-		// TODO Auto-generated method stub
-		
+		  livro.setNumero(gerarNumero());
+	        listaLivros.add(livro);
+	        System.out.println("Livro cadastrado com sucesso!");
+	   
 	}
 
 	@Override
@@ -22,7 +24,7 @@ public class LivroController implements LivroRepository {
 
 			if (livro != null) {
 				if (listaLivros.remove(livro) == true)
-					System.out.println("\nA Conta numero: " + numero + " foi deletada com sucesso!");
+					System.out.println("\nO Livro " + livro.getTitulo() + " foi deletado."  );
 			} else
 				System.out.println("\nA Conta numero: " + numero + " não foi encontrada!");
 		
@@ -30,22 +32,27 @@ public class LivroController implements LivroRepository {
 
 	@Override
 	public void listarLivros() {
-		for (var livro : listaLivros) {
-			livro.visualizarLivro();
-		}
-		
+		 if (listaLivros.isEmpty()) {
+	            System.out.println("\nNenhum livro cadastrado.");
+	        } else {
+	            for (var livro : listaLivros) {
+	                livro.visualizarLivro();
+	            }
+	        }
+	    }
+	
+	public int gerarNumero() {
+		return ++numero;
 	}
 	
 	public void listarTitulos() {
-		for (var livro : listaLivros) {
-			livro.listarPorTitulos();
+		if (listaLivros.isEmpty()) {
+            System.out.println("\nNenhum título cadastrado.");
+        } else {
+            for (var livro : listaLivros) {
+                livro.listarPorTitulos();
+            }
 		}
-		
-	}
-
-	@Override
-	public void gerarLivros(Livro livro) {
-		listaLivros.add(livro);
 		
 	}
 	

@@ -9,7 +9,5 @@ public interface LivroRepository {
 
 	public void listarLivros();
 
-	public void gerarLivros(Livro livro);
-
 	public void buscarLivro(int numero);
 }
