@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import controller.Carrinho;
 import controller.LivroController;
 import model.Livro;
 import model.LivroDigital;
@@ -13,6 +14,8 @@ public class Menu {
 	public static Scanner leia = new Scanner(System.in);
 
 	public static void main(String[] args) {
+
+		Carrinho carrinho = new Carrinho();
 
 		LivroController livros = new LivroController();
 
@@ -43,10 +46,12 @@ public class Menu {
 			System.out.println("            1 - Listar Livros                        ");
 			System.out.println("            2 - Buscar Livro                         ");
 			System.out.println("            3 - Deletar Livro                        ");
-			System.out.println("            4 - Finalizar Compra                     ");
-			System.out.println("            5 - Listar Pedidos                       ");
-			System.out.println("            6 - Fazer Pedido                         ");
-			System.out.println("            7 - Sair                                 ");
+			System.out.println("            4 - Adicionar livro ao carrinho          ");
+			System.out.println("            5 - remover livro do carrinho            ");
+			System.out.println("            6 - Lista do carrinho                    ");
+			System.out.println("            7 - Cadastrar Livro                      ");
+			System.out.println("            7 - Finalizar Compra                     ");
+			System.out.println("            9 - Sair                                 ");
 			System.out.println("                                                     ");
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                                                        ");
@@ -59,7 +64,7 @@ public class Menu {
 				opcao = 0;
 			}
 
-			if (opcao == 7) {
+			if (opcao == 9) {
 				System.out.println("\nEstante Virtual - Obrigado por visitar!");
 				sobre();
 				leia.close();
@@ -75,9 +80,8 @@ public class Menu {
 			case 2:
 				System.out.println("Visualizar detalhes do Livro - por numero\n\n");
 				livros.listarTitulos();
-				System.out.println("Digite o numero da conta: ");
+				System.out.println("Digite o numero do livro: ");
 				numero = leia.nextInt();
-
 				livros.buscarLivro(numero);
 				keyPress();
 				break;
@@ -92,15 +96,30 @@ public class Menu {
 				keyPress();
 				break;
 			case 4:
-				System.out.println("Finalizar Compra\n\n");
+				System.out.println("Digite o numero do livro para adicionar ao carrinho:");
+				livros.listarTitulos();
+				int numeroLivroAdicionar = leia.nextInt();
+				livros.adicionarAoCarrinho(numeroLivroAdicionar);
+
 				keyPress();
 				break;
 			case 5:
-				System.out.println("Listar Pedidos\n\n");
+				System.out.println("Escolha o numero do Livro que deseja remover:");
+				livros.listarTitulos();
+				int numeroLivroRemover = leia.nextInt();
+				livros.removerDoCarrinho(numeroLivroRemover);
 				keyPress();
 				break;
 			case 6:
-				System.out.println("Fazer Pedido\n\n");
+				livros.listarItensCarrinho();
+				keyPress();
+				break;
+			case 7:
+				livros.finalizarCompra();
+				keyPress();
+				break;
+			case 8:
+				System.out.println("Cadastrar Livro!\n\n");
 
 				System.out.println("Digite o Título do Livro: ");
 				leia.skip("\\R?");
@@ -126,8 +145,7 @@ public class Menu {
 				leia.skip("\\R?");
 
 				System.out.println("Digite o preço do Livro: ");
-			    preco = leia.nextFloat();
-				System.out.println("\nPedido de Livro criado com sucesso!");
+				preco = leia.nextFloat();
 				System.out.println("Título: " + titulo);
 				System.out.println("Gênero: " + genero);
 				System.out.println("Ano de Publicação: " + ano);
@@ -136,10 +154,14 @@ public class Menu {
 				System.out.println("Numero de Páginas do Livro: " + numeropaginas);
 				System.out.println("Preço Livro: " + preco);
 				if (formato == 1) {
-					livros.cadastrarLivro(new LivroFisico(livros.gerarNumero(), titulo, genero, ano, formato, autor, numeropaginas, preco));
-				}else if(formato == 2) {
-					livros.cadastrarLivro(new LivroDigital(livros.gerarNumero(), titulo, genero, ano, formato, autor, numeropaginas, preco));
-				}else {
+					System.out.println("\nPedido de Livro criado com sucesso!");
+					livros.cadastrarLivro(new LivroFisico(livros.gerarNumero(), titulo, genero, ano, formato, autor,
+							numeropaginas, preco));
+				} else if (formato == 2) {
+					System.out.println("\nPedido de Livro criado com sucesso!");
+					livros.cadastrarLivro(new LivroDigital(livros.gerarNumero(), titulo, genero, ano, formato, autor,
+							numeropaginas, preco));
+				} else {
 					System.out.println("Numero inválido!!");
 				}
 				keyPress();

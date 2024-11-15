@@ -102,7 +102,7 @@ public abstract class Livro {
 			formato = "Formato desconhecido";
 			break;
 		}
-		
+
 		System.out.println("Formato: " + formato);
 		System.out.println("Título: " + this.titulo);
 		System.out.println("Autor: " + this.autor);
@@ -111,7 +111,7 @@ public abstract class Livro {
 		System.out.println("Gênero: " + this.genero);
 		System.out.println("Número de Páginas: " + this.numeropaginas);
 		System.out.printf("Preço: R$ %.2f%n", this.preco);
-		System.out.println("***************************"); 	
+		System.out.println("***************************");
 	}
 
 	public void listarPorTitulos() {
